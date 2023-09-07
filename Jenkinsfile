@@ -33,13 +33,19 @@ pipeline {
             echo "I will always say Hello again!"
         }
         success {
-          echo "Yay, success"
+            echo "Yay, success"
+            script {
+                slackSend(channel: "cordovanetwork", message: "Pipeline successfully")
+            }
         }
         failure {
-          echo "Oh no, failure"
+            echo "Oh no, failure"
+            script {
+                slackSend(channel: "cordovanetwork", message: "Pipeline Failed")
+            }
         }
         cleanup {
-          echo "Don't care success or error"
+            echo "Don't care success or error"
         }
     }
 }
