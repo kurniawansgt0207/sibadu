@@ -34,15 +34,11 @@ pipeline {
         }
         success {
             echo "Yay, success"
-            script {
-                slackSend(channel: "cordovanetwork", message: "Pipeline successfully")
-            }
+            slackSend channel: "cordovanetwork", color: '#BADA55', message: "Pipeline successfully"
         }
         failure {
             echo "Oh no, failure"
-            script {
-                slackSend(channel: "cordovanetwork", message: "Pipeline Failed")
-            }
+            slackSend channel: "cordovanetwork", color: '#DACC34', message: "Pipeline Failed"
         }
         cleanup {
             echo "Don't care success or error"
